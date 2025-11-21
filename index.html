@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hộp Thư Góp Ý Online</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe0e8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 80%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            /* background: linear-gradient(135deg, #ff9ab5 0%, #b3d6ff 100%); */
+            background: linear-gradient(135deg, #6b5fce 0%, #b3d6ff 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+            /* color: #d4275b; */
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header h1 {
+            /* font-size: 28px; */
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-weight: bold;
+        }
+
+        .header h2 {
+            /* font-size: 20px; */
+            font-weight: 400;
+            opacity: 0.95;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 40px 40px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #fff0f3 0%, #ffe5eb 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            border-left: 5px solid #ff9ab5;
+        }
+
+        .intro h3 {
+            color: #d63384;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .intro p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: #d63384;
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Support rows with three form-groups */
+        .form-row.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .required {
+            color: #ff6b9d;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #ffe0e8;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ff9ab5;
+            box-shadow: 0 0 0 4px rgba(255, 154, 181, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .rating-section {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ee 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .rating-question {
+            color: #d63384;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            font-size: 45px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffd700;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .star:hover {
+            transform: scale(1.2);
+        }
+
+        .rating-label {
+            color: #ff6b9d;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .feedback-box {
+            margin-top: 25px;
+        }
+
+        .upload-section {
+            background: #fff5f7;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px dashed #ffb3c6;
+            text-align: center;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            background: #ffe8ee;
+            border-color: #ff9ab5;
+        }
+
+        .upload-icon {
+            width: 60px;
+            height: 60px;
+            background: #ffe0e8;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff9ab5 0%, #ff6b9d 100%);
+            color: white;
+            border: none;
+            padding: 16px 50px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+            display: block;
+            margin: 30px auto 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-note a {
+            color: #ff6b9d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .stars {
+                gap: 8px;
+            }
+
+            .star {
+                font-size: 35px;
+            }
+
+            .form-row.three {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="/img/logoBVPS.jpg" alt="MEDLATEC Logo">
+            </div>
+            <h1>HÒM THƯ GÓP Ý ONLINE</h1>
+            <h2>BỆNH VIỆN PHỤ SẢN THÀNH PHỐ CẦN THƠ</h2>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h3>Kính thưa Quý khách,</h3>
+                <p>Lời đầu tiên, <b>Bệnh viện Phụ sản thành phố Cần Thơ</b> xin chân thành cảm ơn Quý khách đã sử dụng
+                    dịch vụ của
+                    chúng tôi. Mục đích chính của hộm thư góp ý là lắng nghe ý kiến của khách hàng về chất lượng dịch vụ
+                    của <b>Bệnh viện Phụ sản thành phố Cần Thơ</b>. Cuộc khảo sát sẽ giúp chúng tôi cải thiện dịch vụ
+                    tốt hơn.</p>
+                <p>Câu trả lời và thông tin của Quý khách sẽ được giữ bí mật và được sử dụng cho mục đích nghiên cứu.
+                    Chúng tôi cam kết KHÔNG chia sẻ bất kỳ thông tin nào với một bên thứ ba hoặc cho các mục đích khác.
+                </p>
+            </div>
+
+            <h3 class="section-title">THÔNG TIN KHÁCH HÀNG</h3>
+
+            <form id="feedbackForm">
+                <div class="form-row">
+                    <!-- <div class="form-group">
+                        <label>Đơn vị tiếp nhận <span class="required">*</span></label>
+                        <select required>
+                            <option value="">Dịch vụ lấy mẫu tận nơi tại Cần Thơ</option>
+                            <option value="hanoi">Bệnh viện Hà Nội</option>
+                            <option value="hcm">Bệnh viện TP.HCM</option>
+                            <option value="danang">Bệnh viện Đà Nẵng</option>
+                        </select>
+                    </div> -->
+                    <div class="form-group">
+                        <label>Họ tên <span class="required">*</span></label>
+                        <input type="text" placeholder="NGUYỄN THỊ MỸ HẠNH" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Điện thoại <span class="required">*</span></label>
+                        <input type="tel" placeholder="0372153786" required>
+                    </div>
+                </div>
+
+                <div class="form-row three">
+                    <div class="form-group">
+                        <label>Giới tính <span class="required">*</span></label>
+                        <select required>
+                            <option value="nu">Nữ</option>
+                            <option value="nam">Nam</option>
+                            <option value="khac">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sử dụng dịch vụ</label>
+                        <input type="date" value="2025-10-19">
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh <span class="required">*</span></label>
+                        <input type="date" value="1991-08-16" required>
+                    </div>
+                </div>
+
+                <div class="rating-section">
+                    <p class="rating-question">Quý khách có hài lòng về chất lượng dịch vụ của Bệnh viện Phụ sản thành
+                        phố Cần Thơ không? <span class="required">*</span></p>
+                    <div class="stars">
+                        <span class="star" data-rating="1">⭐</span>
+                        <span class="star" data-rating="2">⭐</span>
+                        <span class="star" data-rating="3">⭐</span>
+                        <span class="star" data-rating="4">⭐</span>
+                        <span class="star" data-rating="5">⭐</span>
+                    </div>
+                    <p class="rating-label">Tuyệt vời</p>
+
+                    <div class="feedback-box">
+                        <label style="text-align: left;">Quý khách vui lòng cho biết ý kiến góp ý sau khi trải nghiệm
+                            dịch vụ tại Bệnh viện Phụ sản thành phố Cần Thơ</label>
+                        <textarea placeholder="Nhập ý kiến của bạn..."></textarea>
+                    </div>
+
+                    <div class="upload-section">
+                        <div class="upload-icon">📎</div>
+                        <p style="color: #d63384; font-weight: 600;">Tải ảnh lên</p>
+                        <input type="file" style="display: none;" accept="image/*" multiple>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Gửi đánh giá</button>
+
+                <p class="footer-note">
+                    Bằng việc nhấn nút Gửi đánh giá bạn đã đồng ý với
+                    <a href="#">Quy chế hoạt động</a> và
+                    <a href="#">Chính sách bảo vệ thông tin</a> của Bệnh viện Phụ sản thành phố Cần Thơ
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingLabel = document.querySelector('.rating-label');
+        const uploadSection = document.querySelector('.upload-section');
+        const fileInput = document.querySelector('input[type="file"]');
+
+        const ratingLabels = {
+            1: 'Rất không hài lòng',
+            2: 'Không hài lòng',
+            3: 'Bình thường',
+            4: 'Hài lòng',
+            5: 'Tuyệt vời'
+        };
+
+        let selectedRating = 5;
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                selectedRating = index + 1;
+                ratingLabel.textContent = ratingLabels[selectedRating];
+
+                stars.forEach((s, i) => {
+                    if (i < selectedRating) {
+                        s.style.transform = 'scale(1.2)';
+                        s.style.opacity = '1';
+                    } else {
+                        s.style.transform = 'scale(1)';
+                        s.style.opacity = '0.4';
+                    }
+                });
+            });
+
+            star.addEventListener('mouseenter', () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.style.opacity = '1';
+                    }
+                });
+            });
+
+            star.addEventListener('mouseleave', () => {
+                stars.forEach((s, i) => {
+                    if (i < selectedRating) {
+                        s.style.opacity = '1';
+                    } else {
+                        s.style.opacity = '0.4';
+                    }
+                });
+            });
+        });
+
+        // Initialize stars
+        stars.forEach((s, i) => {
+            if (i < 5) {
+                s.style.opacity = '1';
+            }
+        });
+
+        uploadSection.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files.length > 0) {
+                uploadSection.querySelector('p').textContent = `Đã chọn ${files.length} file`;
+            }
+        });
+
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Cảm ơn bạn đã gửi đánh giá! ❤️');
+        });
+    </script>
+</body>
+
+</html>
